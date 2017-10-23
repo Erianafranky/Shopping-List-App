@@ -59,18 +59,18 @@ class TestShoppingList(unittest.TestCase):
 		"""
 		self.assertRaises(ValueError, self.shopping_list.delete_item_in_shopping_list, 'biscuits')
 
-		def test_add_item_to_shopping_list(self):
-			"""
-			adds item to shoppinglist with items
-			"""
-			self.shopping_list.items.append('milk')
-			self.shopping_list.add_item_to_shopping_list('tea')
-			self.assertEqual(self.shopping_list.items, ['milk', 'tea'])
+	def test_add_item_to_shopping_list(self):
+	    """
+	    adds item to shoppinglist with items
+	    """
+	    self.shopping_list.items.append('milk')
+	    self.shopping_list.add_item_to_shopping_list('tea')
+	    self.assertEqual(self.shopping_list.items, ['milk', 'tea'])
 
-		def test_add_item_to_empty_shopping_list(self):
-			"""
-			adds item to an empty shopping list
-			"""
-			self.shopping_list.add_item_to_shopping_list('sweets')
-			self.assertEqual(self.shopping_list.items, ['sweets'])
+	def test_add_item_to_empty_shopping_list(self):
+	    """
+	    adds item to an empty shopping list
+	    """
+	    self.shopping_list.add_item_to_shopping_list('sweets')
+	    self.assertEqual(self.shopping_list.items, ['sweets'])
 
