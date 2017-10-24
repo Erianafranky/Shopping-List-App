@@ -17,7 +17,7 @@ class ShoppingList(object):
 		"""
 		deletes an item from shopping list
 		"""
-		if item in self.items:
+		if len(self.items) > 0 and item in self.items:
 			self.items.remove(item)
 		else:
 			raise ValueError
