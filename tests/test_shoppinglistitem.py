@@ -7,7 +7,6 @@ class TestShoppingItem(unittest.TestCase):
 	"""
 
 	def setUp(self):
-		self.shopping_list = ShoppingList('groceries')
 		self.shopping_item = ShoppingItem('milk', 2, 'units')
 
 	
