@@ -25,8 +25,8 @@ class TestUser(unittest.TestCase):
 		"""
 		user create shoppinglist
 		"""
-		shopping_list = self.user.create_shopping_list('groceries')
-		self.assertIn(shopping_list, self.user.shopping_lists)
+		self.user.create_shopping_list('groceries')
+		self.assertEqual(self.user.shopping_lists, ['groceries'])
 
 	def test_delete_shopping_list(self):
 		"""
@@ -34,21 +34,17 @@ class TestUser(unittest.TestCase):
 		the list should exist in their shoppinglist 
 		before it's deleted
 		"""
-		user2 = User('Olive' 'olive@example.com', 'olivejane')
-		user_shopping_list = self.user.create_shopping_list('groceries')
-		user2_shopping_list = self.user2.create_shopping_list('home accessories')
-		self.user.delete_shopping_list(user_shopping_list)
-		self.assertNotIn(user_shopping_list, self.user.shopping_lists)
+		self.user.shopping_lists.append('list1')
+		self.user.shopping_lists.append('list2')
+		self.user.delete_shopping_lists('list1')
+		self.assertEqual(self.user.shopping_lists, ['list2'])
 
 	def test_view_shopping_list(self):
 		"""
 		User can view shoppinglist created
 		"""
-		user2 = User('Olive' 'olive@example.com', 'olivejane')
-		user_shopping_list = self.user.create_shopping_list('groceries')
-		user2_shopping_list = self.user2.create_shopping_list('home accessories')
-		self.user.view_shopping_list(user_shopping_list)
-		self.assertIn(user_shopping_list, self.user.shopping_lists)
+		self.user.shopping_lists.append('list1')
+		self.assertEqual(self.user.view_shopping_lists(),['list1'])
 
 
 	

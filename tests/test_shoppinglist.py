@@ -15,20 +15,20 @@ class TestShoppingList(unittest.TestCase):
 		self.shopping_list.items.append('tomato')
 		self.assertEqual(self.shopping_list.view_shopping_list(), ['tomato'])
 
-	def test_delete_item_in_shopping_list(self):
+	def test_delete_item_from_shopping_list(self):
 		"""
 		adds item then delete one of the items
 		"""
 		self.shopping_list.items.append('sugar')
 		self.shopping_list.items.append('tea')
-		self.shopping_list.delete_item_in_shopping_list('tea')		
+		self.shopping_list.delete_item_from_shopping_list('tea')		
 		self.assertEqual(self.shopping_list.items, ['sugar'])
 
 	def test_delete_item_not_in_shopping_list(self):
 		"""
 		deletes item that is not in the shopping list
 		"""
-		self.assertRaises(ValueError, self.shopping_list.delete_item_in_shopping_list, 'biscuits')
+		self.assertRaises(ValueError, self.shopping_list.delete_item_from_shopping_list, 'biscuits')
 
 	def test_add_item_to_shopping_list(self):
 	    """
