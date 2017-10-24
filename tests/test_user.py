@@ -6,7 +6,7 @@ class TestUser(unittest.TestCase):
 	This  includes the tests for the user model
 	"""
 	def setUp(self):
-		self.user = User('Dottie', 'dottie@example.com', 'abc123')
+		self.user = User('dottie', 'dottie@example.com', 'abcdefg')
 
 	def test_login(self):
 		"""
