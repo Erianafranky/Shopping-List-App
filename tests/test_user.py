@@ -1,5 +1,5 @@
 import unittest
-
+from app.classes import User
 
 class TestUser(unittest.TestCase):
 	"""

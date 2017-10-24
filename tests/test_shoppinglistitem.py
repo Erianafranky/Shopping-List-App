@@ -1,5 +1,5 @@
 import unittest
-
+from app.classes import ShoppingItem
 
 class TestShoppingItem(unittest.TestCase):
 	"""
