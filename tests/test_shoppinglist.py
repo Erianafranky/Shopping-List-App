@@ -1,5 +1,5 @@
 import unittest
-from app.classes import ShoppingList
+from app.classes.shopping_list import ShoppingList
 class TestShoppingList(unittest.TestCase):
 	"""
 	This includes the tests for the shoppinglist model
