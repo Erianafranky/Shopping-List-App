@@ -6,7 +6,7 @@ class TestShoppingList(unittest.TestCase):
 	"""
 
 	def setUp(self):
-		self.shopping_list = ShoppingList('groceries')
+		self.shopping_list = ShoppingList('User')
 
 	def test_view_item_in_shopping_list(self):
 		"""
