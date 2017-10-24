@@ -1,6 +1,5 @@
 import unittest
-import sys
-from classes.shopping_item import ShoppingItem
+
 
 class TestShoppingItem(unittest.TestCase):
 	"""
