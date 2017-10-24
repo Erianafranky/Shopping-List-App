@@ -1,12 +1,10 @@
 # Shopping-List-App
-https://travis-ci.org/Erianafranky/Shopping-List-App.svg?branch=master
 
-
-#Intro
+Intro
 
 Shopping list provides a platform for users to record and share items they want to spend their money on while keeping track of their spending.
 
-#How
+How
 
 Follow these steps to use this project:
 
