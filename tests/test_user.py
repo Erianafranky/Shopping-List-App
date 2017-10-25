@@ -36,7 +36,7 @@ class TestUser(unittest.TestCase):
 		"""
 		self.user.shopping_lists.append('list1')
 		self.user.shopping_lists.append('list2')
-		self.user.delete_shopping_lists('list1')
+		self.user.delete_shopping_list('list1')
 		self.assertEqual(self.user.shopping_lists, ['list2'])
 
 	def test_view_shopping_list(self):
@@ -44,7 +44,7 @@ class TestUser(unittest.TestCase):
 		User can view shoppinglist created
 		"""
 		self.user.shopping_lists.append('list1')
-		self.assertEqual(self.user.view_shopping_lists(),['list1'])
+		self.assertEqual(self.user.view_shopping_list(),['list1'])
 
 
 	
