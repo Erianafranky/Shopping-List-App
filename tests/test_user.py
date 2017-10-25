@@ -13,13 +13,14 @@ class TestUser(unittest.TestCase):
 		user can login with the correct credentials
 		"""
 		self.assertTrue(self.user.login('Dottie', 'abcdef'))
+		self.assertFalse(self.user.login('Drottie', 'fedcba'))
 
-	def test_incorrect_login(self):
+	#def test_incorrect_login(self):
 		"""
 		test to reject user login if the user login
 		with incorrect credentials
 		"""
-		self.assertFalse(self.user.login('Drottie', 'fedcba'))
+		#self.assertFalse(self.user.login('Drottie', 'fedcba'))
 
 	def test_create_shopping_list(self):
 		"""
