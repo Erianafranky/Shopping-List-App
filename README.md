@@ -1,4 +1,4 @@
-# Shopping-List-App
+# Shopping-List-App  [![Build Status](https://travis-ci.org/Erianafranky/Shopping-List-App.svg?branch=develop)](https://travis-ci.org/Erianafranky/Shopping-List-App)
 
 **Intro**
 
