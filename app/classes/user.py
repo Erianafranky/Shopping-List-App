@@ -15,8 +15,6 @@ class User(object):
 		"""
 		if username == self.username and password == self.password:
 			return True
-		else:
-			return False
 
 	def create_shopping_list(self, shopping_list):
 		"""
