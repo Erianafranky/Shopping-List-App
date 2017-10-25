@@ -19,7 +19,7 @@ class TestUser(unittest.TestCase):
 		test to reject user login if the user login
 		with incorrect credentials
 		"""
-		self.assertFalse(self.user.login('drottie','abcdef'))
+		self.assertFalse(self.user.login('drottie'))
 
 	def test_create_shopping_list(self):
 		"""
