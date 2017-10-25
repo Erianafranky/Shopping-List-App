@@ -2,11 +2,11 @@ class User(object):
 	"""
 	class modelling a user
 	"""
-	def __init__(self, username,email,password,shopping_lists=None):
+	def __init__(self, username,email,password):
 		self.username = username
 		self.email = email
 		self.password = password
-		self.shopping_lists = [] or shopping_lists
+		self.shopping_lists = [] 
 
 
 	def login(self, username, password):

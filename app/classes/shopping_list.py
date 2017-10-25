@@ -2,10 +2,9 @@ class ShoppingList(object):
 	"""
 	class modelling a shopping list
 	"""
-	def __init__(self, name, items=None, shopping_lists=None):
+	def __init__(self, name, items=None):
 		self.name = name
-		self.items = items
-		self.shopping_lists=shopping_lists or []
+		self.items = items or []
 
 	def add_item_to_shopping_list(self,item):
 		"""
@@ -28,5 +27,3 @@ class ShoppingList(object):
 		"""
 		return self.items
 
-	
-		
