@@ -21,7 +21,7 @@ class ShoppingList(object):
 		else:
 			raise ValueError
 
-	def view_item_from_shopping_list(self):
+	def view_shopping_list(self):
 		"""
 		view shopping list
 		"""
