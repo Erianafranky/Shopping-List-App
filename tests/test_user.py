@@ -8,7 +8,7 @@ class TestUser(unittest.TestCase):
 	def setUp(self):
 		self.user = User('dottie', 'dottie@example.com', 'abcdefg')
 
-	def test_login(self):
+	def test_correct_login(self):
 		"""
 		user can login with the correct credentials
 		"""
