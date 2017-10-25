@@ -7,7 +7,7 @@ install:
   - pip install coveralls
 
 script:
-  - pytest
+  - pytests
 
 after_success:
   - coveralls
