@@ -11,5 +11,12 @@ Follow these steps to use this project:
 1. Create the working environment
 
 2. Git clone the project into your machine ($ git clone https://github.com/Erianafranky/Shopping-List-App.git)
-master
+
+3. Install requirements pip install -r requirements.txt
+
+4. Navigate to the app folder then run the command python run.py
+
+**Tests**
+Test the project by using nose and view the coverage report $ nosetests --with-coverage
+
 
