@@ -17,6 +17,7 @@ Follow these steps to use this project:
 4. Navigate to the app folder then run the command python run.py
 
 **Tests**
+
 Test the project by using nose and view the coverage report $ nosetests --with-coverage
 
 
