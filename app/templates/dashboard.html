@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>Dashboard <small> Welcome {{session.username | capitalize}}</small></h1>
+    <a class="btn btn-success" href="/add_shoppinglist">Add Shoppinglist</a>
+    <hr> 
+        {% if shopping_lists %}
+        <table class="table table-striped">
+        <caption>My shopping lists<span class="badge">{{ shopping_lists|count }}</span></caption>
+        <tr>
+        <th>Name</th>
+        </tr>
+        {% for shopping_list in shopping_lists %}
+            <tr>
+                <td>{{ shopping_list.name }}</td>
+                <td><a href="edit_shopping_list/{{shopping_list.name}}" class="btn btn-default pull-right">Edit</a></td>
+                <td>
+                <form action="{{url_for('delete_shopping_list', name=shopping_list.name)}}" method="post">
+                <input type="hidden" name="method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+                </td>
+                <td>
+                <form action="{{url_for('add_items_to_shopping_list', name=shopping_list.name)}}" method="post">
+                <input type="submit" value="view" class="btn btn-success">
+                </form>
+                </td>
+                </tr>
+        {% endfor %}
+        
+        </table>
+        {% else %}
+       <div class="well">
+        <p class="text-center">You don't have any shopping lists, please add one
+        </p>
+        </div>
+        {% endif %}
+    
+{% endblock %}
