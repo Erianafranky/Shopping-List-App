@@ -32,7 +32,7 @@ class RegisterForm(Form):
 	email = StringField('Email', [validators.Length(min=5, max=20)])
 	password = PasswordField('Password', [validators.DataRequired(), 
 		validators.EqualTo('confirm', message='Passwords do not match')])
-	confirm =  Password = PasswordField('Confirm Password')
+	confirm = PasswordField('Confirm Password')
 
 @app.route('/register', methods=['GET', 'POST'])
 def create_account():
