@@ -8,6 +8,7 @@ from functools import wraps
 
 
 app =  Flask(__name__)
+users = {}
 
 @app.route('/')
 def index():
@@ -16,6 +17,7 @@ def index():
 	"""
 	return render_template('index.html')
 
+
 @app.route('/about')
 def about():
 	"""
@@ -23,11 +25,11 @@ def about():
 	"""
 	return render_template('about.html')
 
+
 class RegisterForm(Form):
 	"""
 	A form to enable users registration
 	"""
-	name = StringField('Name', [validators.Length(min=2, max=30)])
 	username = StringField('Username', [validators.Length(min=2, max=30)])
 	email = StringField('Email', [validators.Length(min=5, max=20)])
 	password = PasswordField('Password', [validators.DataRequired(), 
@@ -35,24 +37,31 @@ class RegisterForm(Form):
 	confirm = PasswordField('Confirm Password')
 
 @app.route('/register', methods=['GET', 'POST'])
-def create_account():
+def create_account(username=None, email=None, password=None):
 	"""
 	function to enable users to register
 	"""
 	form = RegisterForm(request.form)
 	if request.method == 'POST' and form.validate():
-		name = form.name.data 
+		#name = form.name.data 
 		username = form.username.data
 		email = form.email.data
 		password = form.password.data
-		
-		flash('You are registered and can login', 'success')
+		confirm_password=form.confirm.data
 
-		return redirect(url_for('login'))
+		if password == confirm_password:
+			user = User(username, email, password)
+			users[user.username] = user
+			flash('You are registered and can login', 'success')
+			return redirect(url_for('login'))
+		else:
+			return render_template("register.html",
+                                   error="Passwords do not match")
 	return render_template('register.html', form=form)
 
+
 @app.route('/login', methods=['GET','POST'])
-def login():
+def login(username=None, password=None):
 	"""
 	function to enable users to login
 	"""
@@ -60,16 +69,18 @@ def login():
 		#get form fields
 		username = request.form['username']
 		password = request.form['password']
-		#passed
-		session['logged_in'] = True
-		session['username'] = username
-
-		flash('You are now logged in', 'success')
-		return redirect(url_for('dashboard'))
-		error = 'Invalid login'
-		return render_template('login.html', error=error)
-
+		
+		user=users.get(username,False)
+		if user.login(username, password):
+			session['username']= username
+			session['logged_in']=True
+			flash('You are now logged in', 'success')
+			return redirect(url_for('dashboard'))
+		else:
+			error='Invalid login'
+			return render_template("login.html", error=error)
 	return render_template('login.html')
+
 
 def is_logged_in(f):
 	"""check if a user is logged in"""
@@ -86,45 +97,64 @@ def is_logged_in(f):
 @app.route('/dashboard')
 @is_logged_in 
 def dashboard():
-	user = User('username', 'email', 'password')
-	shopping_lists = user.view_shopping_list()
+	user=users[session['username']]
+	shopping_list = user.view_shopping_list()
+	return render_template('dashboard.html', shopping_lists=shopping_list)
+
 	
-
-	return render_template('dashboard.html', shopping_lists=shopping_lists)
-
 class ShoppingListForm(Form):
 	listname = StringField('Listname', [validators.Length(min=1, max=50)])
 
 @app.route('/add_shoppinglist', methods=['GET', 'POST'])
 @is_logged_in
-def user_create_shopping_list():
+def create_shopping_list():
 	"""
 	function to create shopping list
 	"""
 	form = ShoppingListForm(request.form)
-	user = User('username', 'email', 'password')
+	user = users[session['username']]
+	
 	if request.method == 'POST' and form.validate():
 		name = form.listname.data 
 		shopping_list = ShoppingList(name)
 		user.create_shopping_list(shopping_list)
 
 		flash('ShoppingList Created', 'success')
-		return redirect(url_for('add_items_to_shoppinglist'))
+		return redirect(url_for('dashboard'))
 
 	return render_template('add_shoppinglist.html', form=form)
 
-@app.route('/delete_shopping_list', methods=['POST'])
+@app.route('/delete_shopping_list/<id>', methods=['POST'])
 @is_logged_in
-def delete_shopping_list():
+def delete_shopping_list(id):
 	"""
 	function to delete shopping_list
 	"""
-	form=ShoppingListForm(request.form)
-	name = request.form['name']
-	shopping_list = ShoppingList(name)
-	shopping_list.delete_shopping_list(name)
+	user=users[session['username']]
+	shopping_list = user.shopping_lists[int(id)-1]
+	user.delete_shopping_list(shopping_list)
+
 	flash('Shopping list deleted', 'success')
 	return redirect(url_for('dashboard'))
+
+@app.route('/update_shoppinglist/<id>', methods=['GET', 'POST'])
+@is_logged_in
+def update_shopping_list(id):
+	"""
+	function to edit the shopping lists created
+	"""
+	form = ShoppingListForm(request.form)
+	user=users[session['username']]
+
+	if request.method == 'POST' and form.validate():
+		name = request.form['listname']
+		user.shopping_lists[int(id)-1].name = name
+		
+		flash('Shopping list updated', 'success')
+		return redirect(url_for('dashboard'))
+
+	return render_template('update_shoppinglist.html', form=form, listname=user.shopping_lists[int(id)-1].name)
+
 
 
 
@@ -139,6 +169,8 @@ def add_items_to_shoppinglist():
 	function to add items to the shopping list
 	"""
 	form = AddItemsForm(request.form)
+	user=users[session['username']]
+
 	if request.method == 'POST' and form.validate():
 		items = form.items.data
 		quantity = form.quantity.data
@@ -160,5 +192,5 @@ def logout():
 
 
 if __name__ == '__main__':
-	app.secret_key='abcd1234'
+	app.secret_key = 'abcd1234'
 	app.run(debug=True)
