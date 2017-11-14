@@ -12,9 +12,13 @@ Follow these steps to use this project:
 
 2. Git clone the project into your machine ($ git clone https://github.com/Erianafranky/Shopping-List-App.git)
 
-3. Install requirements pip install -r requirements.txt
+3. Install virtual environment $pip install virtualenv
 
-4. Navigate to the app folder then run the command python run.py
+4. Create a virtual environment for the project $virtualenv my-venv then activate it $source my-venv/bin/activate
+
+5. Install requirements pip install -r requirements.txt
+
+6. Navigate to the app folder then run the command python run.py
 
 **Tests**
 
