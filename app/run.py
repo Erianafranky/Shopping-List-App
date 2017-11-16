@@ -71,13 +71,13 @@ def login(username=None, password=None):
 		password = request.form['password']
 		
 		user=users.get(username,False)
-		if user.login(username, password):
+		if user and user.login(username, password):
 			session['username']= username
 			session['logged_in']=True
 			flash('You are now logged in', 'success')
 			return redirect(url_for('dashboard'))
 		else:
-			error='Invalid login'
+			error='User does not exist, Please register first'
 			return render_template("login.html", error=error)
 	return render_template('login.html')
 
