@@ -1,5 +1,5 @@
 # Shopping-List-App  [![Build Status](https://travis-ci.org/Erianafranky/Shopping-List-App.svg?branch=develop)](https://travis-ci.org/Erianafranky/Shopping-List-App)   [![Coverage Status](https://coveralls.io/repos/github/Erianafranky/Shopping-List-App/badge.svg?branch=master)](https://coveralls.io/github/Erianafranky/Shopping-List-App?branch=master) 
-[![Maintainability](https://api.codeclimate.com/v1/badges/1dd2e2cc417438c48b2e/maintainability)](https://codeclimate.com/github/Erianafranky/Shopping-List-App/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1dd2e2cc417438c48b2e/maintainability)](https://codeclimate.com/github/Erianafranky/Shopping-List-App/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/1dd2e2cc417438c48b2e/test_coverage)](https://codeclimate.com/github/Erianafranky/Shopping-List-App/test_coverage)
 
 **Intro**
 
