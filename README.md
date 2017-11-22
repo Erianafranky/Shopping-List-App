@@ -1,4 +1,4 @@
-# Shopping-List-App  [![Build Status](https://travis-ci.org/Erianafranky/Shopping-List-App.svg?branch=develop)](https://travis-ci.org/Erianafranky/Shopping-List-App)   (https://coveralls.io/repos/github/Erianafranky/Shopping-List-App/badge.svg?branch=master)](https://coveralls.io/github/Erianafranky/Shopping-List-App?branch=master)
+# Shopping-List-App  [![Build Status](https://travis-ci.org/Erianafranky/Shopping-List-App.svg?branch=develop)](https://travis-ci.org/Erianafranky/Shopping-List-App)   [![Coverage Status](https://coveralls.io/repos/github/Erianafranky/Shopping-List-App/badge.svg?branch=master)](https://coveralls.io/github/Erianafranky/Shopping-List-App?branch=master)
 
 **Intro**
 
