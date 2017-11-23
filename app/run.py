@@ -43,7 +43,7 @@ def create_account(username=None, email=None, password=None):
 	"""
 	form = RegisterForm(request.form)
 	if request.method == 'POST' and form.validate():
-		#name = form.name.data 
+		 
 		username = form.username.data
 		email = form.email.data
 		password = form.password.data
