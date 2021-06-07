@@ -50,7 +50,7 @@ stevedore==1.23.0
 Tempita==0.5.2
 termcolor==1.1.0
 twilio==6.2.0
-urllib3==1.22
+urllib3==1.26.5
 virtualenv==15.1.0
 virtualenv-clone==0.2.6
 virtualenvwrapper==4.7.2
